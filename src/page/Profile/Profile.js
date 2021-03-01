@@ -1,55 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getProfile } from '../../actions/profile';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+import IsLoading from '../../tools/isLoading';
 import ProfileLanguages from './ProfileLanguages/ProfileLanguages';
 import ProfileSocials from './ProfileSocials/ProfileSocials';
 
 const Profile = (props) => {
-    let [state, setState] = useState({
-        isFetching: false,
-        error: null
-    })
 
-    useEffect(() => {
-        props.getProfile(props.userId).then((response) => {
-            setState(prev => ({
-                ...prev,
-                isFetching: response.isFetching,
-                error: response.error,
-            }))
-        });
+    useLayoutEffect(() => {
+        props.getProfile(props.userId);
     }, []);
 
+    const data = <div>
+        <p>Мой город: {props.profile.city ? props.profile.city : <i>Город не указан</i>}</p>
+        <ProfileLanguages {...props} />
+        <ProfileSocials {...props} />
+    </div>
+
     return <div>
-        {
-            state.isFetching === true
-                ? <div>
-                    {
-                        <div>
-                            {
-                                state.error
-                                    ? <h1>{state.error || 'Ошибка'}</h1>
-                                    : <div>
-                                        <h1>Profile</h1>
-                                        <div>
-                                            <p>Мой город: {props.profile.city ? props.profile.city : <i>Город не указан</i>}</p>
-                                            <ProfileLanguages {...props} />
-                                            <ProfileSocials {...props} />
-                                        </div>
-                                    </div>
-                            }
-                        </div>
-                    }
-                </div>
-                : <h1>Wait...</h1>
-        }
+        <IsLoading isFetching={props.isFetching}>
+            {
+                props.error ?  <h1>{props.error}</h1> : data 
+            }
+        </IsLoading>
     </div>
 }
 
 const mapStateToProps = (state) => ({
     userId: state.auth.userId,
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    isFetching: state.preloader.isFetching,
+    error: state.preloader.error
 });
 
 

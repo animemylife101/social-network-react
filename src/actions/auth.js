@@ -1,29 +1,28 @@
 import API from "../api/api"
 import { LOG_IN, LOG_OUT } from "../types/auth";
-
+import { setError, setPreloader } from './preloader';
 import defineError from '../items-helper/define-error';
+import { browserHistory } from 'react-router'
 
 export const login = (data) => async (dispatch) => {
+    dispatch(setError(''));
+    dispatch(setPreloader(true));
     try {
         let response = await API.login(data);
         if (response.data.status === 'ok') {
             dispatch(loginSucces(response.data.data));
-            return {
-                status: 'ok'
-            }
+            dispatch(setError('redirect'));
+            // browserHistory.push('/some_url');
+            dispatch(setPreloader(false));
         }
 
         if (response.data.status === 'err') {
-            return {
-                status: 'err',
-                error: defineError(response.data.message)
-            }
+            dispatch(setError(defineError(response.data.message)));
+            dispatch(setPreloader(false));
         }
-    } catch(err) {
-        return {
-            status: 'err',
-            error: defineError('not_connected_to_network')
-        }
+    } catch (err) {
+        dispatch(setError(defineError('not_connected_to_network')));
+        dispatch(setPreloader(false));
     }
 };
 

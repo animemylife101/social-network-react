@@ -23,45 +23,38 @@ const LoginForm = (props) => {
         }))
     }
 
+
     const onSubmitForm = async (event) => {
         event.preventDefault();
+        await props.login(state.data);
+  
+        // if (props.isFetching) {
+        //     return props.history.push('/news');
+        // }
+
         setState(prev => ({
             ...prev,
-            isFetching: true,
-            error: ''
-        }))
-
-        let response = await props.login(state.data);
-        if (response.status === 'ok') {
-            setState(prev => ({
+            data: {
                 ...prev,
-                isFetching: false,
-                error: ''
-            }));
-            props.history.push('/profile');
-        }
-        if (response.status === 'err') {
-            setState(prev => ({
-                ...prev,
-                isFetching: false,
-                error: response.error,
-                data: {
-                    ...prev,
-                    email: '',
-                    password: ''
-                }
-            }));
-        }
+                email: '',
+                password: ''
+            }
+        }));
     }
 
     const { email, password } = state.data;
+    console.log(props);
     return <form className={style.Form} onSubmit={onSubmitForm} >
         <input type='text' placeholder={'Email'} name={'email'} value={email} onChange={onHandleChange} />
         <input type='text' placeholder={'Password'} name={'password'} value={password} onChange={onHandleChange} />
-
-        {state.error.length ? <span>{state.error}</span> : ''}
-        {state.isFetching ? <span>loading...</span> : <button>LOGIN</button>}
+        {props.error ? <span>{props.error}</span> : ''}
+        <button disabled={props.isFetching ? true : false}>Login</button>
     </form>
 }
 
-export default connect(null, { login })(LoginForm);
+const mapStateToProps = (state) => ({
+    isFetching: state.preloader.isFetching,
+    error: state.preloader.error
+})
+
+export default connect(mapStateToProps, { login })(LoginForm);

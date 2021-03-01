@@ -1,23 +1,28 @@
 import API from "../api/api"
 import defineError from "../items-helper/define-error";
 import { GET_NEWS } from '../types/news';
+import { setError, setPreloader } from "./preloader";
 
 export const getNews = () => async (dispatch) => {
-    try {
-        let response = await API.news.getNews();
-        if (response.data.status === 'ok') {
-            dispatch(getNewsSuccess(response.data.data));
+    dispatch(setPreloader(false));
+    if (navigator.onLine) {
+        try {
+            let response = await API.news.getNews();
+            if (response.data.status === 'ok') {
+                dispatch(getNewsSuccess(response.data.data));
+                dispatch(setError(false));
+                dispatch(setPreloader(true));
+            }
+            dispatch(setError(false));
+            dispatch(setPreloader(true));
+    
+        } catch (err) {
+            dispatch(setError(defineError('server_failed')));
+            dispatch(setPreloader(true));
         }
-
-        return {
-            isFetching: true,
-            error: false
-        }
-    } catch (err) {
-        return {
-            isFetching: true,
-            error: defineError('not_connected_to_network')
-        }
+    } else {
+        dispatch(setError(defineError('not_connected_to_network')));
+        dispatch(setPreloader(true));
     }
 }
 const getNewsSuccess = (data) => ({

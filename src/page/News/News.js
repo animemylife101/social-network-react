@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getNews } from '../../actions/news';
 import style from './News.module.css';
+import IsLoading from '../../tools/isLoading';
 
 const NewsItem = (props) => {
     return <div className={style.NewsBlock}>
@@ -11,45 +12,28 @@ const NewsItem = (props) => {
 }
 
 const News = (props) => {
-    let [state, setState] = useState({
-        isFetching: false,
-        error: null
-    })
-
-    useEffect(() => {
-        props.getNews().then((response) => {
-            setState(prev => ({
-                ...prev,
-                isFetching: response.isFetching,
-                error: response.error
-            }))
-        });
+    
+    useLayoutEffect(() => {
+        props.getNews();
     }, [])
 
+    const data = <div>
+        {props.news.map((a) => <NewsItem key={a.id} {...a} />)}
+        <p>Количество постов: {props.news.length}</p>
+    </div>
+
     return <div>
-        {
-            state.isFetching === true
-                ? <div>
-                    {
-                        state.error
-                            ? <h1>{state.error}</h1>
-                            : <div>
-                                {
-                                    <div>
-                                        {props.news.map((a) => <NewsItem key={a.id} {...a} />)}
-                                        <p>Количество постов: {props.news.length}</p>
-                                    </div>
-                                }
-                            </div>
-                    }
-                </div>
-                : <h1>Wait...</h1>
-        }
+        { console.log(props.error) }
+        <IsLoading isFetching={props.isFetching}>
+            {props.error ? <h1>{props.error}</h1> : data}
+        </IsLoading>
     </div>
 }
 
 const mapStateToProps = (state) => ({
-    news: state.news.news
+    news: state.news.news,
+    isFetching: state.preloader.isFetching,
+    error: state.preloader.error
 })
 
 export default connect(mapStateToProps, { getNews })(News);

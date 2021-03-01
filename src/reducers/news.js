@@ -1,7 +1,7 @@
 import { GET_NEWS } from "../types/news";
 
 const initializationState = {
-    news: null
+    news: []
 }
 
 const newsReducer = (state = initializationState, action) => {
