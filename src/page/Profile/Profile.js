@@ -21,7 +21,7 @@ const Profile = (props) => {
     return <div>
         <IsLoading isFetching={props.isFetching}>
             {
-                props.error ?  <h1>{props.error}</h1> : data 
+                props.error === 'ok' ? data : <h1>{props.error}</h1>
             }
         </IsLoading>
     </div>
