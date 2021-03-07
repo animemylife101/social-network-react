@@ -3,19 +3,20 @@ import { LOG_IN, LOG_OUT } from "../types/auth";
 import { setError, setPreloader } from './preloader';
 import defineError from '../items-helper/define-error';
 import { browserHistory } from 'react-router'
+import { ROUTING } from "../types/routing";
+import { push } from "react-router-redux";
 
-export const login = (data) => async (dispatch) => {
+export const login = (data, history) => async (dispatch) => {
     dispatch(setError(''));
     dispatch(setPreloader(true));
     try {
         let response = await API.login(data);
         if (response.data.status === 'ok') {
             dispatch(loginSucces(response.data.data));
-            dispatch(setError('redirect'));
-            // browserHistory.push('/some_url');
-            dispatch(setPreloader(false));
+            return {
+                status: 'OK'
+            }
         }
-
         if (response.data.status === 'err') {
             dispatch(setError(defineError(response.data.message)));
             dispatch(setPreloader(false));

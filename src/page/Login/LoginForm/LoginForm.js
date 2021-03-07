@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { login } from '../../../actions/auth';
 import style from '../Login.module.css';
 
@@ -26,24 +27,22 @@ const LoginForm = (props) => {
 
     const onSubmitForm = async (event) => {
         event.preventDefault();
-        await props.login(state.data);
-  
-        // if (props.isFetching) {
-        //     return props.history.push('/news');
-        // }
-
-        setState(prev => ({
-            ...prev,
-            data: {
+        let login = props.login(state.data, props.history);
+        Promise.all([login]).then(Response => {
+            if (Response[0].status === 'OK') props.history.push('/news');
+            setState(prev => ({
                 ...prev,
-                email: '',
-                password: ''
-            }
-        }));
+                data: {
+                    ...prev,
+                    email: '',
+                    password: ''
+                }
+            }));
+
+        })
     }
 
     const { email, password } = state.data;
-    console.log(props);
     return <form className={style.Form} onSubmit={onSubmitForm} >
         <input type='text' placeholder={'Email'} name={'email'} value={email} onChange={onHandleChange} />
         <input type='text' placeholder={'Password'} name={'password'} value={password} onChange={onHandleChange} />
