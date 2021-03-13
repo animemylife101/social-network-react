@@ -1,13 +1,13 @@
 import React from 'react';
 import defineIcon from '../../../items-helper/define-icon';
 
-const ProfileSocials = (props) => {
+const ProfileSocials = ({ profile }) => {
 
     return <div>
         Мои социальные сети:
         {
-            props.profile.social.length > 1
-                ? props.profile.social.map((a, i) => {
+            profile.social.length > 1
+                ? profile.social.map((a, i) => {
                     return <div key={i}>
                         <img src={defineIcon(a.label)} />
                         <a href={a.link} target='_blank' rel="noreferrer noopener" >{a.label}</a>

@@ -19,7 +19,7 @@ const Nav = (props) => {
         // props.history.push('/login') 
         // this function was used when the logic was without 'React Google Login' 
 
-        props.login();
+        props.login(null, null, 'LOGIN_WITH_GOOGLE');
         // props.history.push('/profile');
     }
 
@@ -34,23 +34,13 @@ const Nav = (props) => {
         <NavLink to='/profile'>Profile</NavLink>
 
         {
-            props.userId ?
-
-                // <button onClick={props.logout} >Выйти</button>
-                <GoogleLogout
-                    clientId='882151184255-cbpcg3k39jlqhp5qb3vb6u05en6la08t.apps.googleusercontent.com'
-                    buttonText='Выйти'
-                    onLogoutSuccess={responseGoogleLogout}
-                />
-                :
-                <GoogleLogin
-                    clientId='882151184255-cbpcg3k39jlqhp5qb3vb6u05en6la08t.apps.googleusercontent.com'
-                    buttonText='Войти'
-                    onSuccess={responseGoogleLogin}
-                    onFailure={responseGoogleLogin}
-                    cookiePolicy={'single_host_origin'}
-                />
-            // <button onClick = { () => { props.history.push('/login') }}>Войти</button>
+            props.userId
+                ? <GoogleLogout
+                    clientId='616850661912-tfs0513h7vrh5m2ljvrtq0o952abv74k.apps.googleusercontent.com'
+                    buttonText='Выйти' onLogoutSuccess={responseGoogleLogout} />
+                : <GoogleLogin clientId='616850661912-tfs0513h7vrh5m2ljvrtq0o952abv74k.apps.googleusercontent.com'
+                    buttonText='Войти' onSuccess={responseGoogleLogin}
+                    onFailure={responseGoogleLogin} cookiePolicy={'single_host_origin'} />
         }
     </div>
 }

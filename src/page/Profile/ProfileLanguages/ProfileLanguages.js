@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProfileLanguages = (props) => {
+const ProfileLanguages = ({ profile }) => {
     return <div>
         Языки, которые я знаю:
         {
-            props.profile.languages.length
-                ? props.profile.languages.map((a, i) => {
+            profile.languages.length
+                ? profile.languages.map((a, i) => {
                     return <p key={i}>{a}</p>
                 })
                 : <i>Не указано</i>
