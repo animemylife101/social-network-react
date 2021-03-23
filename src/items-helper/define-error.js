@@ -7,7 +7,7 @@ const defineError = (error) => {
         case 'not_connected_to_network':
             return 'Подключитесь к сети';
         case 'server_failed':
-            return 'Информация недоступна. Попробуйте попытку позже';
+            return '';
         default:
             return 'Проблема с сервером';
     }

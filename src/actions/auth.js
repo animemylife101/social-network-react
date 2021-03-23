@@ -12,6 +12,7 @@ export const login = (data, meta, type) => async (dispatch) => {
                 let response = await API.login(data);
                 if (response.data.status === 'ok') {
                     dispatch(loginSucces(response.data.data));
+                    localStorage.setItem(`userId`, response.data.data.id)
                     dispatch(setPreloader(false));
                     return {
                         status: 'OK'
@@ -42,7 +43,10 @@ export const login = (data, meta, type) => async (dispatch) => {
 };
 
 export const loginWithGoogle = () => ({ type: LOGIN_WITH_GOOGLE });
-export const logout = () => (dispatch) => { dispatch(unfollowSucces()); }
+export const logout = () => (dispatch) => { 
+    localStorage.removeItem(`userId`);
+    dispatch(unfollowSucces()); 
+}
 
 const loginSucces = (data) => ({ type: LOG_IN, data });
 const unfollowSucces = () => ({ type: LOG_OUT });
