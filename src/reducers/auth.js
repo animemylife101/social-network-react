@@ -7,11 +7,12 @@ const initializationState = {
 const authReducer = (state = initializationState, action) => {
     switch (action.type) {
         case LOG_IN:
+            const userId = action.data.id;
             // localStorage.setItem(`userId`, action.data.id)
             localStorage.setItem(`userId`, 1);
             return {
                 ...state,
-                userId: 1
+                userId, userId
             }
             // return {
             //     ...state,

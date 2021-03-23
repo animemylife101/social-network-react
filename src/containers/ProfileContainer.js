@@ -8,11 +8,11 @@ import ProfileLanguages from '../page/Profile/ProfileLanguages/ProfileLanguages'
 import ProfileSocials from '../page/Profile/ProfileSocials/ProfileSocials';
 import PropTypes from 'prop-types';
 
-const ProfileContainer = ({profile, ...props}) => {
+const ProfileContainer = ({ profile, ...props }) => {
     const data = <div>
         <p>Мой город: {profile.city ? profile.city : <i>Город не указан</i>}</p>
-        <ProfileLanguages profile = {profile} />
-        <ProfileSocials profile = {profile} />
+        <ProfileLanguages profile={profile} />
+        <ProfileSocials profile={profile} />
     </div>
     return <Profile {...props} data={data} />
 }
@@ -22,7 +22,11 @@ ProfileContainer.propTypes = {
         city: PropTypes.string,
         languages: PropTypes.array,
         social: PropTypes.array,
-        userId: PropTypes.number
+        userId: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.oneOf([undefined]),
+            PropTypes.number
+        ])
     }),
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.string

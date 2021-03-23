@@ -12,9 +12,11 @@ const NavContainer = (props) => {
 
 NavContainer.propTypes = {
     userId: PropTypes.oneOfType([
-        PropTypes.string.isRequired,
-        PropTypes.number.isRequired
-    ]),
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.oneOf([undefined]),
+        PropTypes.oneOf([null]),
+    ])
 }
 
 const mapStateToProps = (state) => ({

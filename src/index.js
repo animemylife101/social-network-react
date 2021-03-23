@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App'
-import { MemoryRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <MemoryRouter>
+  <BrowserRouter>
     <App />
-  </MemoryRouter>,
+  </BrowserRouter>,
   document.getElementById('root')
 );

@@ -6,14 +6,18 @@ const withAuthRedirect = (Component) => {
 
     const WrapperComponent = (props) => {
         if (!props.userId) {
-            return <Redirect to = '/login' />
+            return <Redirect to='/login' />
         }
 
         return <Component />
     }
 
     WrapperComponent.propTypes = {
-        userId: PropTypes.string
+        userId: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.object,
+            PropTypes.oneOf([[null]])
+        ])
     }
 
     const mapStateToProps = (state) => ({

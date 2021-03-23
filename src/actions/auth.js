@@ -44,5 +44,5 @@ export const login = (data, meta, type) => async (dispatch) => {
 export const loginWithGoogle = () => ({ type: LOGIN_WITH_GOOGLE });
 export const logout = () => (dispatch) => { dispatch(unfollowSucces()); }
 
-const loginSucces = () => ({ type: LOG_IN });
+const loginSucces = (data) => ({ type: LOG_IN, data });
 const unfollowSucces = () => ({ type: LOG_OUT });
