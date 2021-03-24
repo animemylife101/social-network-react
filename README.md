@@ -31,7 +31,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  <div>
   <h4>POST https://mysterious-reef-29460.herokuapp.com/api/v1/validate</h4>
   <h3>result:
-   ```
+   ```js
     console.log('qwer')
    ```
   </h3>
