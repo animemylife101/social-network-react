@@ -19,13 +19,13 @@ const ProfileSocials = ({ profile }) => {
     </div>
 }
 
-// ProfileSocials.propTypes = {
-//     profile: PropTypes.exact({
-//         city: PropTypes.string,
-//         languages: PropTypes.array,
-//         social: PropTypes.array,
-//         // userId: PropTypes.string
-//     }),
-// }
+ProfileSocials.propTypes = {
+    profile: PropTypes.exact({
+        city: PropTypes.string,
+        languages: PropTypes.array,
+        social: PropTypes.array,
+        // userId: PropTypes.string
+    }),
+}
 
 export default ProfileSocials;
