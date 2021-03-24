@@ -151,6 +151,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  }
  ```
 <h2>Google integration</h2>
+
 ```javascript
 {
  props.userId
