@@ -19,7 +19,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  <ul>
    <li>
     Jest
-    <img src = 'https://gph.is/g/aQwN2bq'></img>
+    <img src = 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif'></img>
    </li>
    
   <li>
