@@ -5,27 +5,14 @@ import style from './Nav.module.css';
 import { login, logout } from '../../actions/auth';
 import GoogleLogin, { GoogleLogout } from 'react-google-login';
 
-{/* <GoogleLogin
-        clientId='882151184255-cbpcg3k39jlqhp5qb3vb6u05en6la08t.apps.googleusercontent.com'
-        buttonText='Login'
-        onSuccess={responseGoogleLogin}
-        onFailure={responseGoogleLogin}
-        cookiePolicy={'single_host_origin'}
-        onClick = { () => { alert('login') } } /> */}
-
 const Nav = (props) => {
 
     const responseGoogleLogin = (Response) => {
-        // props.history.push('/login') 
-        // this function was used when the logic was without 'React Google Login' 
-
         props.login(null, null, 'LOGIN_WITH_GOOGLE');
-        // props.history.push('/profile');
     }
 
     const responseGoogleLogout = (Response) => {
         props.logout();
-        // props.history.push('/profile');
     }
 
     return <div className={style.Nav}>
