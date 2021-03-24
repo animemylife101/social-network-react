@@ -29,7 +29,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 <h2>Endpoints</h2>
  
   <h4>POST https://mysterious-reef-29460.herokuapp.com/api/v1/validate</h4>
-  <h3>result</h3>
+  <h3>Output</h3>
   
    ```javascript
    {
