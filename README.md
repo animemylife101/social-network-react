@@ -49,6 +49,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
   ```
  
  <h4>GET https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/2 / profile request </h4>
+ 
    ```javascript
    {
   "status": "ok",
