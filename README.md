@@ -13,6 +13,25 @@ You will also see any lint errors in the console.
 
  <h2>npm test</h2>
 
+ <h4>Example of test</h4>
+ 
+  ```javascript
+   describe(`react-router test`, () => {
+    test('should  render the home page', () => {
+        const container = mount(<MemoryRouter initialEntries={["/news"]}>
+            <App />
+        </MemoryRouter>);
+        expect(container.debug().search('news_page')).not.toBe(-1);
+    });
+    test('should  render the not_found page', () => {
+        const container = mount(<MemoryRouter initialEntries={["/some_underfined_url"]}>
+            <App />
+        </MemoryRouter>);
+        expect(container.debug().search('error_page')).not.toBe(-1);
+    });
+});
+  ```
+
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
  <h2>Testing tools</h2>
