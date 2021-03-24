@@ -132,3 +132,21 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  ```
  
 <h2>PropTypes</h2>
+ <h4>Example of test</h4>
+ 
+ ```javascript
+  ProfileContainer.propTypes = {
+    profile: PropTypes.exact({
+        city: PropTypes.string,
+        languages: PropTypes.array,
+        social: PropTypes.array,
+        userId: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.oneOf([undefined]),
+            PropTypes.number
+        ])
+    }),
+    isFetching: PropTypes.bool.isRequired,
+    error: PropTypes.string
+ }
+ ```
