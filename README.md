@@ -50,43 +50,44 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  
  <h4>GET https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/2 / profile request </h4>
  <h3>Output</h3>
+ 
    ```javascript
    {
-  "status": "ok",
-  "data": {
-    "userId": 1,
-    "city": "Москва",
-    "languages": [
-      "English",
-      "Русский"
-    ],
-    "social": [
-      {
-        "label": "vk",
-        "link": "vk.com/maxpfrontend"
-      },
-      {
-        "label": "telegram",
-        "link": "t.me/maxpfrontend"
-      },
-      {
-        "label": "web",
-        "link": "https://maxpfrontend.ru"
-      },
-      {
-        "label": "youtube",
-        "link": "https://www.youtube.com/channel/UCqJyAVWwIqPWKEkfCSP1y4Q"
-      },
-      {
-        "label": "twitter",
-        "link": "https://twitter.com/MaxPatsiansky"
-      },
-      {
-        "label": "twitch",
-        "link": "http://twich.tv/maxpfrontend"
-      }
-    ]
-  }
+   "status": "ok",
+   "data": {
+     "userId": 1,
+     "city": "Москва",
+     "languages": [
+       "English",
+       "Русский"
+     ],
+     "social": [
+       {
+         "label": "vk",
+         "link": "vk.com/maxpfrontend"
+       },
+       {
+         "label": "telegram",
+         "link": "t.me/maxpfrontend"
+       },
+       {
+         "label": "web",
+         "link": "https://maxpfrontend.ru"
+       },
+       {
+         "label": "youtube",
+         "link": "https://www.youtube.com/channel/UCqJyAVWwIqPWKEkfCSP1y4Q"
+       },
+       {
+         "label": "twitter",
+         "link": "https://twitter.com/MaxPatsiansky"
+       },
+       {
+         "label": "twitch",
+         "link": "http://twich.tv/maxpfrontend"
+       }
+     ]
+   }
 }
   ```
 
@@ -95,18 +96,18 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
  
   ```javascript
    {
-  "status": "ok",
-  "data": [
-    {
-      "id": 1,
-      "title": "",
-      "text": ""
-    },
-    {
-      "id": 2,
-      "title": ""
-      "text": ""
-    }
-  ]
-}
-  ```
+    "status": "ok",
+    "data": [
+      {
+        "id": 1,
+        "title": "",
+        "text": ""
+      },
+      {
+        "id": 2,
+        "title": ""
+        "text": ""
+      }
+    ]
+ }
+ ```
