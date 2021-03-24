@@ -14,13 +14,13 @@ const ProfileLanguages = ({ profile }) => {
     </div>
 }
 
-// ProfileLanguages.propTypes = {
-//     profile: PropTypes.exact({
-//         city: PropTypes.string,
-//         languages: PropTypes.array,
-//         social: PropTypes.array,
-//         // userId: PropTypes.string
-//     }),
-// }
+ProfileLanguages.propTypes = {
+    profile: PropTypes.exact({
+        city: PropTypes.string,
+        languages: PropTypes.array,
+        social: PropTypes.array,
+        // userId: PropTypes.string
+    }),
+}
 
 export default ProfileLanguages;
