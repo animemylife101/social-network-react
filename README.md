@@ -1,4 +1,4 @@
-<h2>npm test</h2>
+<h2>Npm test</h2>
 
  <h4>Example of test</h4>
  
