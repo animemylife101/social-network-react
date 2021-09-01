@@ -22,10 +22,11 @@ const Login = (props) => {
 
         <GoogleLogin clientId='882151184255-cbpcg3k39jlqhp5qb3vb6u05en6la08t.apps.googleusercontent.com'
             buttonText='Войти с помощью Google' onSuccess={responseGoogleLoginSuccess}
-            cookiePolicy={'single_host_origin'} onRequest={responseGoogleLoginRequest} onFailure={responseGoogleLoginFailure} />
+            cookiePolicy={'single_host_origin'} onRequest={responseGoogleLoginRequest}
+            onFailure={responseGoogleLoginFailure} />
 
         <Error error={props.state.error} />
-        <button disabled={props.state.inProgress ? true : false}>Login</button>
+        <button disabled={props.state.inProgress ? true : false} className={style['Login_button']}>Login</button>
     </form>
 }
 

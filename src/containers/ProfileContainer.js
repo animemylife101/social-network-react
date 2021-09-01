@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getProfile } from '../actions/profile';
+import { getProfile } from '../store/actions/profile';
 import withAuthRedirect from '../hoc/withAuthRedirect';
 import Profile from '../page/Profile/Profile';
 import ProfileLanguages from '../page/Profile/ProfileLanguages/ProfileLanguages';

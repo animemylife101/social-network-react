@@ -1,5 +1,5 @@
-import API from '../api/api';
-import defineError from '../items-helper/define-error';
+import API from '../../api/api';
+import defineError from '../../items-helper/define-error';
 import { GET_PROFILE } from '../types/profile';
 import { setError, setPreloader } from './preloader';
 
@@ -23,12 +23,12 @@ export const getProfile = (userId) => async (dispatch) => {
         } catch (err) {
             dispatch(setError(defineError('server_failed')));
             dispatch(setPreloader(true));
-        }    
+        }
     } else {
         dispatch(setError(defineError('not_connected_to_network')));
         dispatch(setPreloader(true));
     }
-    
+
 };
 
 const getProfileSucces = (data) => ({

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { compose } from "redux";
-import { login } from "../actions/auth";
+import { login } from "../store/actions/auth";
 import Login from "../page/Login/Login"
 import google from "../responsibility/google";
 import PropTypes from 'prop-types';

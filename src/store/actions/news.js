@@ -1,5 +1,5 @@
-import API from "../api/api"
-import defineError from "../items-helper/define-error";
+import API from "../../api/api"
+import defineError from "../../items-helper/define-error";
 import { GET_NEWS } from '../types/news';
 import { setError, setPreloader } from "./preloader";
 

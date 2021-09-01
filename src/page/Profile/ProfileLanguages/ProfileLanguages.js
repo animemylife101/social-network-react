@@ -19,7 +19,7 @@ ProfileLanguages.propTypes = {
         city: PropTypes.string,
         languages: PropTypes.array,
         social: PropTypes.array,
-        // userId: PropTypes.string
+        userId: PropTypes.number
     }),
 }
 

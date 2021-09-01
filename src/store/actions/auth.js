@@ -1,7 +1,7 @@
-import API from "../api/api"
+import API from "../../api/api"
 import { LOG_IN, LOG_OUT, LOGIN_WITH_GOOGLE } from "../types/auth";
 import { setError, setPreloader } from './preloader';
-import defineError from '../items-helper/define-error';
+import defineError from '../../items-helper/define-error';
 
 export const login = (data, meta, type) => async (dispatch) => {
     dispatch(setError(''));
@@ -43,9 +43,9 @@ export const login = (data, meta, type) => async (dispatch) => {
 };
 
 export const loginWithGoogle = () => ({ type: LOGIN_WITH_GOOGLE });
-export const logout = () => (dispatch) => { 
+export const logout = () => (dispatch) => {
     localStorage.removeItem(`userId`);
-    dispatch(unfollowSucces()); 
+    dispatch(unfollowSucces());
 }
 
 const loginSucces = (data) => ({ type: LOG_IN, data });

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
-import { login, logout } from '../actions/auth';
+import { login, logout } from '../store/actions/auth';
 import Nav from '../components/Nav/Nav';
 import PropTypes from 'prop-types';
 
@@ -25,4 +25,4 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withRouter, connect(mapStateToProps, { logout, login }))
-(NavContainer);
+    (NavContainer);

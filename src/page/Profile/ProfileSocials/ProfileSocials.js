@@ -9,7 +9,7 @@ const ProfileSocials = ({ profile }) => {
             profile.social.length > 1
                 ? profile.social.map((a, i) => {
                     return <div key={i}>
-                        <img src={defineIcon(a.label)} />
+                        <img src={defineIcon(a.label)} alt='icon' />
                         <a href={a.link} target='_blank' rel="noreferrer noopener" >{a.label}</a>
                         <br />
                     </div>
@@ -24,7 +24,7 @@ ProfileSocials.propTypes = {
         city: PropTypes.string,
         languages: PropTypes.array,
         social: PropTypes.array,
-        // userId: PropTypes.string
+        userId: PropTypes.string
     }),
 }
 

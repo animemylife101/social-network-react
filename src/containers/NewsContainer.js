@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getNews } from '../actions/news';
+import { getNews } from '../store/actions/news';
 import NewsItem from '../items/news/NewsItem';
 import News from '../page/News/News';
 import PropTypes from 'prop-types';

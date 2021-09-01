@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import style from './Nav.module.css';
-import { login, logout } from '../../actions/auth';
+import { login, logout } from '../../store/actions/auth';
 import GoogleLogin, { GoogleLogout } from 'react-google-login';
 
 const Nav = (props) => {
